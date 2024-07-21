@@ -93,7 +93,7 @@ generate_password.grid(row=4, column=3)
 add.grid(row=5, column=2, columnspan=2)
 search.grid(row=2, column=3)
 
-username_input.insert(END, "chahinnouh5@gmail.com")
+username_input.insert(END, "@gmail.com")
 website_input.focus()
 
 window.mainloop()
