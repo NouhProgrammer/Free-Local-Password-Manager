@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 from Password_Generator import Generator
 import json
+BG_COLOR = "#77E4C8"
+ENTRY_BG_COLOR = "#36C2CE"
 
 #--------------------------------Find Password-------------------------------#
 
@@ -17,7 +19,7 @@ def find_password():
          messagebox.showinfo("Not Found!", "The requested website was not found!")
 
 #------------------------------Generate Password-----------------------------#
-password_generator = Generator
+password_generator = Generator()
 def generate_password():
     password = password_generator.generate()
     password_input.delete(0, END)
@@ -62,19 +64,19 @@ def save_data():
 #----------------------------------UI Setup----------------------------------#
 window = Tk()
 window.title("MyPASS")
-window.config(padx=50, pady=50)
+window.config(padx=50, pady=50, bg=BG_COLOR)
 
-canvas = Canvas(width=200, height=200)
+canvas = Canvas(width=200, height=200, bg=BG_COLOR, highlightthickness=0)
 logo = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo)
 
-website = Label(text="Website:")
-username = Label(text="Email/Username:")
-password = Label(text="Password:")
+website = Label(text="Website:", bg=BG_COLOR)
+username = Label(text="Email/Username:", bg=BG_COLOR)
+password = Label(text="Password:", bg=BG_COLOR)
 
-website_input = Entry(width=30)
-username_input = Entry(width=30)
-password_input = Entry(width=30)
+website_input = Entry(width=30, bg=ENTRY_BG_COLOR)
+username_input = Entry(width=30, bg=ENTRY_BG_COLOR)
+password_input = Entry(width=30, bg=ENTRY_BG_COLOR)
 
 generate_password = Button(text="Generate Password", command=generate_password,width=30)
 add = Button(text="Add", width=60, command=save_data)
@@ -93,7 +95,7 @@ generate_password.grid(row=4, column=3)
 add.grid(row=5, column=2, columnspan=2)
 search.grid(row=2, column=3)
 
-username_input.insert(END, "@gmail.com")
+username_input.insert(END, "chahinnouh5@gmail.com")
 website_input.focus()
 
 window.mainloop()
