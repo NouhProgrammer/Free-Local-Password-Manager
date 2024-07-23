@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 from Password_Generator import Generator
 import json
+from pyperclip import copy
+
 BG_COLOR = "#77E4C8"
 ENTRY_BG_COLOR = "#36C2CE"
 
@@ -12,6 +14,7 @@ def find_password():
         with open("data.json") as data:
             data_dict = json.load(data)
             website_data = data_dict[website_input.get()]
+            copy(website_data["password"])
             messagebox.showinfo(website_input.get(), f"Email: {website_data["email"]}\nPassword: {website_data["password"]}")
     except KeyError:
         messagebox.showinfo("Not Found!", "The requested website was not found!")
@@ -22,6 +25,7 @@ def find_password():
 password_generator = Generator()
 def generate_password():
     password = password_generator.generate()
+    copy(password)
     password_input.delete(0, END)
     password_input.insert(0, password)
 
